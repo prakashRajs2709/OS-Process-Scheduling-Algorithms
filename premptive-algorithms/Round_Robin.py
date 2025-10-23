@@ -32,32 +32,38 @@ class Round_Robin:
         ready_queue = deque()
         while len(completed_processes)<n:
             while process_index<n and mylst[process_index]['AT']<=ct:
-                process_index+=1
                 ready_queue.append(mylst[process_index])
-                print(f"Ready Queue:{ready_queue[0]}")
+                process_index+=1
             
             if ready_queue:
                 cur_process = ready_queue.popleft()
                 time_slice = min(TQ,cur_process['RT'])
                 ct+=time_slice
                 cur_process['RT']-=time_slice
-            break
 
+                while process_index<n and mylst[process_index]['AT']<=ct:
+                    ready_queue.append(mylst[process_index])
+                    process_index+=1
+                
+                if cur_process['RT']==0:
+                    cur_process['CT']=ct
+                    completed_processes.append(cur_process)
+                else:
+                    ready_queue.append(cur_process)
+            
+            else:
+                if process_index<n:
+                    ct = mylst[process_index]['AT']
+        for process in completed_processes:
+            process['TAT'] = process['CT'] - process['AT']
+            process['WT'] = process['TAT'] - process['BT']
 
-
-
-
-
-
-
-
-
+        print(f"PID|||AT|||BT|||CT|||TAT|||WT")
         for process in mylst:
-            print(f"PID|||AT|||BT|||CT|||TAT|||WT")
             print(f"{process['pid']}|||||{process['AT']}||||{process['BT']}||||{process['CT']}|||||{process['TAT']}||||{process['WT']}")
 
 
 
 
-obj = Round_Robin(pid = [1,2,3],AT = [4,0,2], BT = [3,6,8], TQ = 2)
+obj = Round_Robin(pid = [1,2,3],AT = [0,4,5], BT = [5,2,4], TQ = 2)
 obj.solve()
