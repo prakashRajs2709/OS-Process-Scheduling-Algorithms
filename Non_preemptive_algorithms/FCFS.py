@@ -69,7 +69,9 @@ class FCFS:
 
 # obj = FCFS(pid=[1,2,3],AT=[0,0,0],BT= [5,3,8])
 # print(obj.solve())
+
 # obj = FCFS(pid=[1,2,3],AT=[2,0,4],BT= [5,3,4])
 # print(obj.solve())
-obj = FCFS(pid=[1,2,3],AT=[5,3,0],BT= [3,1,2])
-print(obj.solve())
+
+# obj = FCFS(pid=[1,2,3],AT=[5,3,0],BT= [3,1,2])
+# print(obj.solve())
