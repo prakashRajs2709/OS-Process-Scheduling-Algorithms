@@ -84,5 +84,5 @@ class Round_Robin:
 # obj = Round_Robin(pid = [1,2,3,4],AT = [0,1,2,4], BT = [5,4,2,1], TQ = 2)
 # print(obj.solve())
 
-obj = Round_Robin(pid = [1,2,3,4,5,6],AT = [0,1,2,3,4,6], BT = [4,5,2,1,6,3], TQ = 2)
-print(obj.solve())
+# obj = Round_Robin(pid = [1,2,3,4,5,6],AT = [0,1,2,3,4,6], BT = [4,5,2,1,6,3], TQ = 2)
+# print(obj.solve())
