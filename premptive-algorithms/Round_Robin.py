@@ -1,10 +1,12 @@
 class Round_Robin:
-    def __init__(self,AT,BT, TQ):
+    def __init__(self,pid,AT,BT, TQ):
+        self.pid = pid
         self.AT = AT
         self.BT = BT
         self.TQ = TQ
     
     def solve(self):
+        pid = self.pid
         AT = self.AT
         BT = self.BT
         TQ = self.TQ
@@ -13,7 +15,7 @@ class Round_Robin:
         for i in range(len(AT)):
             mylst.append(
                 {
-                    "processindex":i+1,
+                    "pid":pid[i],
                     "AT": AT[i],
                     "BT": BT[i],
                     "CT":0,
@@ -22,11 +24,11 @@ class Round_Robin:
                 }
             )
         for process in mylst:
-            process['BT']-=TQ
-            print(process['BT'], process['CT'])
+            print(f"PID|||AT|||BT|||CT|||TAT|||WT")
+            print(f"{process['pid']}|||||{process['AT']}||||{process['BT']}||||{process['CT']}|||||{process['TAT']}||||{process['WT']}")
 
 
 
 
-obj = Round_Robin(AT = [0,0,0], BT = [4,5,3], TQ = 2)
+obj = Round_Robin(pid = [1,2,3],AT = [0,0,0], BT = [4,5,3], TQ = 2)
 obj.solve()
